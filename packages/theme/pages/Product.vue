@@ -44,14 +44,64 @@
 
         <LazyHydrate when-idle>
           <SfAccordion class="product__tabs">
-            <SfAccordionItem :header="'Product Description'">
+            <SfAccordionItem class="product-desc-accordian" :header="'Product Description'">
+              <div class="prouct__description">
+                <span>
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequatur nihil cumque minus beatae fuga suscipit vitae libero veritatis quibusdam sapiente earum soluta nemo minima repudiandae,
+                  repellendus nam voluptatem tempora! Delectus?
+                </span>
+              </div>
               <div class="prouct__description">
                 {{ productGetters.getLongDescription(product) }}
               </div>
             </SfAccordionItem>
           </SfAccordion>
         </LazyHydrate>
-
+        <div class="product-info-container">
+          <SfHeading
+            title="Product Information"
+            :level="4"
+            class="sf-heading--no-underline sf-heading--left"
+          />
+          <table class="prod-info">
+            <tr>
+              <th>Speciality</th>
+              <td>Natural</td>
+            </tr>
+            <tr>
+              <th>Weight</th>
+              <td>{{ productGetters.getProductWeight(product) }}kg</td>
+            </tr>
+            <tr>
+              <th>Ingredient Type</th>
+              <td></td>
+            </tr>
+            <tr>
+              <th>Brand</th>
+              <td></td>
+            </tr>
+            <tr>
+              <th>Farm</th>
+              <td></td>
+            </tr>
+            <tr>
+              <th>Manufacturer</th>
+              <td></td>
+            </tr>
+            <tr>
+              <th>Item Part Number</th>
+              <td></td>
+            </tr>
+            <tr>
+              <th>Net quantity</th>
+              <td></td>
+            </tr>
+            <tr>
+              <th>Package Dimension</th>
+              <td>26.8 x 19.99 x 7.59 Cm; 450gms  </td>
+            </tr>
+          </table>
+        </div>
         <div v-if="cartGetters.getTotalItems(cart)" class="bottom-bar-cart">
           <!-- <ul class="list-inline">
             <li>
@@ -213,6 +263,34 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  .product-info-container{
+    margin-left:15px;
+  }
+  .prod-info{
+    text-align: left;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 5px;
+  @include for-desktop {
+    margin-top: 10px;
+  }
+    tr{
+      border-bottom: thin solid rgba(0,0,0,.12);
+      &:first-child{
+        border-top:thin solid rgba(0,0,0,.12);
+      }
+    }
+    th,td{
+      font-weight: 400;
+      font-size: .875rem;
+    height: 48px;
+    padding: 0 10px;
+    }
+    th{
+      background:#eee;
+      font-weight: 500;
+    }
+}
 #product {
   box-sizing: border-box;
   @include for-desktop {
@@ -292,6 +370,10 @@ export default {
 }
 .sf-accordion.product__tabs.has-chevron{
   margin-top: 0 !important;
+  margin-bottom: 5px;
+  @include for-desktop {
+    margin-bottom: 10px;
+  }
 }
 .divider {
   width: 90%;

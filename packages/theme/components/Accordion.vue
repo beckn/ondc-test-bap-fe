@@ -81,4 +81,7 @@ export default {
     background: var(--chevron-color,var(--c-primary));
   }
 }
+.product-desc-accordian .sf-accordion-item__content{
+  margin-left:15px;
+}
 </style>
