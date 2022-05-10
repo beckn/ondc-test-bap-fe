@@ -89,6 +89,12 @@
                 {{ product['./ondc-seller_pickup_return'] ? 'yes' : 'no' }}
               </td>
             </tr>
+            <tr>
+              <th>OndcSellerPickupReturn</th>
+              <td>
+                {{ product['./ondc-seller_pickup_return'] ? 'yes' : 'no' }}
+              </td>
+            </tr>
           </table>
         </div>
         <div v-if="cartGetters.getTotalItems(cart)" class="bottom-bar-cart">
