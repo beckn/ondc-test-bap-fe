@@ -7,8 +7,8 @@
     <div class="product">
       <div @click="goBack" class="sf-chevron--left sf-chevron icon_back">
         <span class="sf-search-bar__icon">
-        <SfIcon color="var(--c-primary)" size="20px" icon="chevron_left" />
-      </span>
+          <SfIcon color="var(--c-primary)" size="20px" icon="chevron_left" />
+        </span>
       </div>
       <div class="images">
         <LazyHydrate when-visible>
@@ -38,19 +38,20 @@
           <div class="s-p-price">
             ₹ {{ productGetters.getPrice(product).regular }}
           </div>
-          <AddToCart :key="keyVal+'product-page'" :value="cartGetters.getItemQty(isInCart({product}))" @updateItemCount="updateCart" />
+          <AddToCart
+            :key="keyVal + 'product-page'"
+            :value="cartGetters.getItemQty(isInCart({ product }))"
+            @updateItemCount="updateCart"
+          />
         </div>
         <div><hr class="sf-divider divider" /></div>
 
         <LazyHydrate when-idle>
           <SfAccordion class="product__tabs">
-            <SfAccordionItem class="product-desc-accordian" :header="'Product Description'">
-              <div class="prouct__description">
-                <span>
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequatur nihil cumque minus beatae fuga suscipit vitae libero veritatis quibusdam sapiente earum soluta nemo minima repudiandae,
-                  repellendus nam voluptatem tempora! Delectus?
-                </span>
-              </div>
+            <SfAccordionItem
+              class="product-desc-accordian"
+              :header="'Product Description'"
+            >
               <div class="prouct__description">
                 {{ productGetters.getLongDescription(product) }}
               </div>
@@ -65,40 +66,28 @@
           />
           <table class="prod-info">
             <tr>
-              <th>Speciality</th>
-              <td>Natural</td>
+              <th>OndcAvailableOnCod</th>
+              <td>
+                {{ product['./ondc-available_on_cod'] ? 'yes' : 'no' }}
+              </td>
             </tr>
             <tr>
-              <th>Weight</th>
-              <td>{{ productGetters.getProductWeight(product) }}kg</td>
+              <th>OndcCancellable</th>
+              <td>
+                {{ product['./ondc-cancellable'] ? 'yes' : 'no' }}
+              </td>
             </tr>
             <tr>
-              <th>Ingredient Type</th>
-              <td></td>
+              <th>OndcReturnable</th>
+              <td>
+                {{ product['./ondc-returnable'] ? 'yes' : 'no' }}
+              </td>
             </tr>
             <tr>
-              <th>Brand</th>
-              <td></td>
-            </tr>
-            <tr>
-              <th>Farm</th>
-              <td></td>
-            </tr>
-            <tr>
-              <th>Manufacturer</th>
-              <td></td>
-            </tr>
-            <tr>
-              <th>Item Part Number</th>
-              <td></td>
-            </tr>
-            <tr>
-              <th>Net quantity</th>
-              <td></td>
-            </tr>
-            <tr>
-              <th>Package Dimension</th>
-              <td>26.8 x 19.99 x 7.59 Cm; 450gms  </td>
+              <th>OndcSellerPickupReturn</th>
+              <td>
+                {{ product['./ondc-seller_pickup_return'] ? 'yes' : 'no' }}
+              </td>
             </tr>
           </table>
         </div>
@@ -175,7 +164,7 @@ import { useUiState } from '~/composables';
 import { useCart, cartGetters, productGetters } from '@vue-storefront/beckn';
 import MobileStoreBanner from '~/components/MobileStoreBanner.vue';
 import LazyHydrate from 'vue-lazy-hydration';
-import { onBeforeMount, ref, watch} from '@vue/composition-api';
+import { onBeforeMount, ref, watch } from '@vue/composition-api';
 
 export default {
   middleware: 'auth',
@@ -189,14 +178,17 @@ export default {
 
     toggleSearchVisible(false);
 
-    watch(() => clearCartPopup.value, (newVal) => {
-      if (!newVal) {
-        keyVal.value++;
+    watch(
+      () => clearCartPopup.value,
+      (newVal) => {
+        if (!newVal) {
+          keyVal.value++;
+        }
       }
-    });
+    );
 
     const data = context.root.$route.query.data;
-    const { product, bpp, bppProvider, locations} = JSON.parse(
+    const { product, bpp, bppProvider, locations } = JSON.parse(
       Buffer.from(data, 'base64').toString()
     );
     const { addItem, cart, load, isInCart } = useCart();
@@ -211,7 +203,11 @@ export default {
       addItem({
         product: product,
         quantity: value,
-        customQuery: { bpp: bpp, bppProvider: bppProvider, locations: locations}
+        customQuery: {
+          bpp: bpp,
+          bppProvider: bppProvider,
+          locations: locations
+        }
       });
     };
 
@@ -263,33 +259,35 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .product-info-container{
-    margin-left:15px;
-  }
-  .prod-info{
-    text-align: left;
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 5px;
+.product-info-container {
+  margin-left: 15px;
+}
+.prod-info {
+  text-align: left;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 5px;
   @include for-desktop {
     margin-top: 10px;
   }
-    tr{
-      border-bottom: thin solid rgba(0,0,0,.12);
-      &:first-child{
-        border-top:thin solid rgba(0,0,0,.12);
-      }
+  tr {
+    border-bottom: thin solid rgba(0, 0, 0, 0.12);
+    &:first-child {
+      border-top: thin solid rgba(0, 0, 0, 0.12);
     }
-    th,td{
-      font-weight: 400;
-      font-size: .875rem;
+  }
+  th,
+  td {
+    font-weight: 400;
+    font-size: 0.875rem;
     height: 48px;
     padding: 0 10px;
-    }
-    th{
-      background:#eee;
-      font-weight: 500;
-    }
+  }
+  th {
+    background: #eee;
+    font-weight: 500;
+    width: 50%;
+  }
 }
 #product {
   box-sizing: border-box;
@@ -308,8 +306,8 @@ export default {
   position: absolute;
   margin: 15px;
   z-index: 2;
-  .sf-icon{
-    --icon-color: #F37A20 !important;
+  .sf-icon {
+    --icon-color: #f37a20 !important;
     width: 20px;
     height: 20px;
   }
@@ -368,7 +366,7 @@ export default {
     }
   }
 }
-.sf-accordion.product__tabs.has-chevron{
+.sf-accordion.product__tabs.has-chevron {
   margin-top: 0 !important;
   margin-bottom: 5px;
   @include for-desktop {
