@@ -68,31 +68,31 @@
             <tr>
               <th>OndcAvailableOnCod</th>
               <td>
-                {{ product['./ondc-available_on_cod'] ? 'yes' : 'no' }}
+                {{ product.ondc_available_on_cod ? 'yes' : 'no' }}
               </td>
             </tr>
             <tr>
               <th>OndcCancellable</th>
               <td>
-                {{ product['./ondc-cancellable'] ? 'yes' : 'no' }}
+                {{ product.ondc_cancellable ? 'yes' : 'no' }}
               </td>
             </tr>
             <tr>
               <th>OndcReturnable</th>
               <td>
-                {{ product['./ondc-returnable'] ? 'yes' : 'no' }}
+                {{ product.ondc_returnable ? 'yes' : 'no' }}
               </td>
             </tr>
             <tr>
               <th>OndcSellerPickupReturn</th>
               <td>
-                {{ product['./ondc-seller_pickup_return'] ? 'yes' : 'no' }}
+                {{ product.ondc_seller_pickup_return ? 'yes' : 'no' }}
               </td>
             </tr>
             <tr>
               <th>OndcSellerPickupReturn</th>
               <td>
-                {{ product['./ondc-seller_pickup_return'] ? 'yes' : 'no' }}
+                {{ product.ondc_seller_pickup_return ? 'yes' : 'no' }}
               </td>
             </tr>
           </table>
