@@ -681,7 +681,7 @@ export default {
       try {
         const response = await status(params, localStorage.getItem('token'));
         await onStatus(
-          { messageIds: helpers.getMessageIdsFromResponse(response) },
+          { orderIds: order.value.order.id },
           localStorage.getItem('token')
         );
       } catch (error) {
