@@ -321,10 +321,12 @@ export default {
     const totalResults = computed(() => {
       let reusltNum = 0;
       for (const bpp of pollResults?.value) {
-        if (bpp.bpp_providers.length !== 0) {
-          for (const provider of bpp.bpp_providers) {
-            if (provider.items) {
-              reusltNum += provider.items.length;
+        if (bpp.bpp_providers) {
+          if (bpp.bpp_providers.length !== 0) {
+            for (const provider of bpp.bpp_providers) {
+              if (provider.items) {
+                reusltNum += provider.items.length;
+              }
             }
           }
         }
