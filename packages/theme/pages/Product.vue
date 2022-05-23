@@ -98,8 +98,10 @@
             <tr>
               <th>OndcStatutoryRequestsPackagedCommodities</th>
               <td>{{ product['@ondc/org/statutory_reqs_packaged_commodities'] ? "Available" : "NA" }}</td>
-              <tr v-if="product['@ondc/org/statutory_reqs_packaged_commodities']">
-                <table>
+            </tr>
+            <tr v-if="product['@ondc/org/statutory_reqs_packaged_commodities']">
+              <td colspan="2" class="prod-info-child-td">
+                <table class="prod-info-child">
                   <tr>
                     <th>CommonOrGenericNameOfCommodity</th>
                     <td>{{ product['@ondc/org/statutory_reqs_packaged_commodities'].common_or_generic_name_of_commodity || "NA" }}</td>
@@ -133,7 +135,8 @@
                     <td>{{ product['@ondc/org/statutory_reqs_packaged_commodities'].net_quantity_or_measure_of_commodity_in_pkg || "NA"}}</td>
                   </tr>
                 </table>
-              </tr>
+              </td>
+
             </tr>
             <tr>
               <th>
@@ -144,8 +147,10 @@
             <tr>
               <th>OndcStatutoryRequestsPrepackagedFood</th>
               <td>{{ product['@ondc/org/statutory_reqs_packaged_commodities'] ? "Available": "NA" }}</td>
-              <tr>
-                <table v-if="product['@ondc/org/statutory_reqs_packaged_commodities']">
+            </tr>
+            <tr v-if="product['@ondc/org/statutory_reqs_packaged_commodities']">
+              <td class="prod-info-child-td" colspan="2">
+                <table class="prod-info-child">
                   <tr>
                     <th>IngredientsInfo</th>
                     <td>{{ product['@ondc/org/statutory_reqs_packaged_commodities'].ingredients_info || "NA" }}</td>
@@ -224,9 +229,9 @@
                   </tr>
 
                 </table>
-              </tr>
-
+              </td>
             </tr>
+
             <tr>
               <th>MandatoryRequestsVeggiesFruits</th>
               <td>{{ product['@ondc/org/mandatory_reqs_veggies_fruits'] ? 'yes' : 'no' }}</td>
@@ -410,6 +415,7 @@ export default {
   width: 100%;
   border-collapse: collapse;
   margin-top: 5px;
+
   @include for-desktop {
     margin-top: 10px;
   }
@@ -425,13 +431,31 @@ export default {
     font-size: 0.875rem;
     height: 48px;
     padding: 0 10px;
+    &.prod-info-child-td{
+      padding: 0;
+    }
   }
   th {
     background: #eee;
     font-weight: 500;
     width: 50%;
+    word-break: break-word
   }
+
 }
+.prod-info-child{
+    @extend .prod-info;
+    margin-top:0;
+    tr{
+    &:first-child {
+        border-top: none;
+      }
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+  }
 #product {
   box-sizing: border-box;
   @include for-desktop {
