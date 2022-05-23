@@ -95,7 +95,144 @@
                 {{ product['@ondc/org/seller_pickup_return'] ? 'yes' : 'no' }}
               </td>
             </tr>
+            <tr>
+              <th>OndcStatutoryRequestsPackagedCommodities</th>
+              <td>{{ product['@ondc/org/statutory_reqs_packaged_commodities'] ? "Available" : "NA" }}</td>
+              <tr v-if="product['@ondc/org/statutory_reqs_packaged_commodities']">
+                <table>
+                  <tr>
+                    <th>CommonOrGenericNameOfCommodity</th>
+                    <td>{{ product['@ondc/org/statutory_reqs_packaged_commodities'].common_or_generic_name_of_commodity || "NA" }}</td>
+                  </tr>
+                  <tr>
+                    <th>contactDetailsConsumerCare</th>
+                    <td>{{ product['@ondc/org/statutory_reqs_packaged_commodities'].contact_details_consumer_care || "NA" }}</td>
+                  </tr>
+                  <tr>
+                    <th>ImportedProductCountryOfOrigin</th>
+                    <td>{{ product['@ondc/org/statutory_reqs_packaged_commodities'].imported_product_country_of_origin || "NA" }}</td>
+                  </tr>
+                  <tr>
+                    <th>ManufacturerOrPackerAddress</th>
+                    <td>{{ product['@ondc/org/statutory_reqs_packaged_commodities'].manufacturer_or_packer_address || "NA" }}</td>
+                  </tr>
+                  <tr>
+                    <th>ManufacturerOrPackerName</th>
+                    <td>{{ product['@ondc/org/statutory_reqs_packaged_commodities'].manufacturer_or_packer_name || "NA" }}</td>
+                  </tr>
+                  <tr>
+                    <th>MonthYearOfManufacturePackinImport</th>
+                    <td>{{ product['@ondc/org/statutory_reqs_packaged_commodities'].month_year_of_manufacture_packing_import || "NA" }}</td>
+                  </tr>
+                  <tr>
+                    <th>multiple_products_name_number_or_qty</th>
+                    <td>{{ product['@ondc/org/statutory_reqs_packaged_commodities'].multiple_products_name_number_or_qty || "NA" }}</td>
+                  </tr>
+                  <tr>
+                    <th>NetQuantityorMeasureOfCommodityInPkg</th>
+                    <td>{{ product['@ondc/org/statutory_reqs_packaged_commodities'].net_quantity_or_measure_of_commodity_in_pkg || "NA"}}</td>
+                  </tr>
+                </table>
+              </tr>
+            </tr>
+            <tr>
+              <th>
+                TimeToShip
+              </th>
+              <td>{{ product['@ondc/org/time_to_ship'] || "NA" }}</td>
+            </tr>
+            <tr>
+              <th>OndcStatutoryRequestsPrepackagedFood</th>
+              <td>{{ product['@ondc/org/statutory_reqs_packaged_commodities'] ? "Available": "NA" }}</td>
+              <tr>
+                <table v-if="product['@ondc/org/statutory_reqs_packaged_commodities']">
+                  <tr>
+                    <th>IngredientsInfo</th>
+                    <td>{{ product['@ondc/org/statutory_reqs_packaged_commodities'].ingredients_info || "NA" }}</td>
+                  </tr>
+                  <tr>
+                    <th>NutritionalInfo</th>
+                    <td>{{ product['@ondc/org/statutory_reqs_packaged_commodities'].nutritionaI || "NA"	 }}</td>
+                  </tr>
+                  <tr>
+                    <th>AdditivesInfo</th>
+                    <td>{{ product['@ondc/org/statutory_reqs_packaged_commodities'].additives_info || "NA" }}</td>
+                  </tr>
+                  <tr>
+                    <th>ManufacturerOrPackerName</th>
+                    <td>{{ product['@ondc/org/statutory_reqs_packaged_commodities'].manufacturer_or_packer_name || "NA" }}</td>
+                  </tr>
+                  <tr>
+                    <th>ManufacturerOrPackerAddress</th>
+                    <td>{{ product['@ondc/org/statutory_reqs_packaged_commodities'].manufacturer_or_packer_address || "NA" }}</td>
+                  </tr>
+                  <tr>
+                    <th>BrandOwnerName</th>
+                    <td>{{ product['@ondc/org/statutory_reqs_packaged_commodities'].brand_owner_name || "NA" }}</td>
+                  </tr>
+                  <tr>
+                    <th>BrandOwnerAddress</th>
+                    <td>{{ product['@ondc/org/statutory_reqs_packaged_commodities'].brand_owner_address || "NA" }}</td>
+                  </tr>
+                  <tr>
+                    <th>BrandOwnerFSSAILogo</th>
+                    <td>{{ product['@ondc/org/statutory_reqs_packaged_commodities'].brand_owner_FSSAI_logo || "NA" }}</td>
+                  </tr>
+                  <tr>
+                    <th>BrandOwnerFSSAILicenseNo</th>
+                    <td>{{ product['@ondc/org/statutory_reqs_packaged_commodities'].brand_owner_FSSAI_license_no || "NA" }}</td>
+                  </tr>
+                  <tr>
+                    <th>OtherFSSAILicenseNo</th>
+                    <td>{{ product['@ondc/org/statutory_reqs_packaged_commodities'].other_FSSAI_license_no || "NA" }}</td>
+                  </tr>
+                  <tr>
+                    <th>ImporterName</th>
+                    <td>{{ product['@ondc/org/statutory_reqs_packaged_commodities'].importer_name || "NA" }}</td>
+                  </tr>
+                  <tr>
+                    <th>ImporterAddress</th>
+                    <td>{{ product['@ondc/org/statutory_reqs_packaged_commodities'].importer_address || "NA" }}</td>
+                  </tr>
+                  <tr>
+                    <th>ImporterFSSAILogo</th>
+                    <td>{{ product['@ondc/org/statutory_reqs_packaged_commodities'].importer_FSSAI_logo || "NA" }}</td>
+                  </tr>
+                  <tr>
+                    <th>ImporterFSSAILicenseNo</th>
+                    <td>{{ product['@ondc/org/statutory_reqs_packaged_commodities'].importer_FSSAI_license_no || "NA" }}</td>
+                  </tr>
+                  <tr>
+                    <th>ImportedProductCountryOfOrigin</th>
+                    <td>{{ product['@ondc/org/statutory_reqs_packaged_commodities'].imported_product_country_of_origin || "NA" }}</td>
+                  </tr>
+                  <tr>
+                    <th>OtherImporterName</th>
+                    <td>{{ product['@ondc/org/statutory_reqs_packaged_commodities'].other_importer_name || "NA" }}</td>
+                  </tr>
+                  <tr>
+                    <th>OtherImporterAddress</th>
+                    <td>{{ product['@ondc/org/statutory_reqs_packaged_commodities'].other_importer_address || "NA" }}</td>
+                  </tr>
+                  <tr>
+                    <th>OtherPremises</th>
+                    <td>{{ product['@ondc/org/statutory_reqs_packaged_commodities'].other_premises || "NA" }}</td>
+                  </tr>
+                  <tr>
+                    <th>OtherImporterCountryOfOrigin</th>
+                    <td>{{ product['@ondc/org/statutory_reqs_packaged_commodities'].other_importer_country_of_origin || "NA" }}</td>
+                  </tr>
+
+                </table>
+              </tr>
+
+            </tr>
+            <tr>
+              <th>MandatoryRequestsVeggiesFruits</th>
+              <td>{{ product['@ondc/org/mandatory_reqs_veggies_fruits'] ? 'yes' : 'no' }}</td>
+            </tr>
           </table>
+
         </div>
         <div v-if="cartGetters.getTotalItems(cart)" class="bottom-bar-cart">
           <!-- <ul class="list-inline">
