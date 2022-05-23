@@ -33,7 +33,7 @@
                   <SfIcon color="var(--c-text)" size="18px" icon="search" />
                 </span>
               </SfButton>
-              <SfButton class="button-pos sf-button--pure pos-left">
+              <SfButton class="button-pos sf-button--pure pos-right-map">
                 <span class="sf-search-bar__icon">
                   <SfIcon color="var(--c-text)" size="20px" icon="marker" />
                 </span>
