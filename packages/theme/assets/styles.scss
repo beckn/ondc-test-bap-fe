@@ -287,7 +287,7 @@ body {
     font-weight: 700;
     list-style: none;
     border-bottom: 1px solid #f0f0f0;
-    padding: 10px 0px 15px 40px;
+    padding: 10px 0px 15px 0px;
     position: relative;
     cursor: pointer;
     .pos-left {
@@ -295,6 +295,18 @@ body {
       top: 0;
       bottom: 0;
       height: 100%;
+    }
+    .pos-map-icon{
+      right:0;
+      top:-9px;
+      height: 100%;
+    }
+    div{
+      margin-right:35px;
+      p.loc-heading{
+        font-size: 14px;
+    font-weight: 700;
+      }
     }
     p {
       font-size: 13px;

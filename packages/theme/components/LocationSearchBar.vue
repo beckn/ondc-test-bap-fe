@@ -28,14 +28,17 @@
         <ul class="location-list">
           <li v-for="(result, i) in searchResults" :key="i" @click="getLocationDetails(result)" v-e2e="'app-location-sidebar-input-options'" >
             <SfButton
-              class="button-pos sf-button--pure pos-left"
+              class="button-pos sf-button--pure pos-map-icon"
             >
               <span class="sf-search-bar__icon">
                 <SfIcon color="var(--c-text)" size="10px" icon="marker" />
               </span>
             </SfButton>
-            {{ result.structured_formatting.main_text }}
-            <p>{{ result.structured_formatting.secondary_text }} </p>
+            <div>
+              <p class="loc-heading">{{ result.structured_formatting.main_text }}</p>
+              <p>{{ result.structured_formatting.secondary_text }} </p>
+            </div>
+
           </li>
         </ul>
 
