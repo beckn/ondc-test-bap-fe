@@ -249,9 +249,12 @@ export default {
           result.value.data.ackResponse.context.transaction_id
         );
 
+        console.log('selectedOption', selectedSearchByOption);
+
         poll({
           // eslint-disable-next-line camelcase
-          message_id: result.value.data.ackResponse.context.message_id
+          message_id: result.value.data.ackResponse.context.message_id,
+          providerName: paramValue
         });
       });
 
