@@ -254,7 +254,7 @@ export default {
         poll({
           // eslint-disable-next-line camelcase
           message_id: result.value.data.ackResponse.context.message_id,
-          providerName: paramValue
+          provider_name: paramValue
         });
       });
 
