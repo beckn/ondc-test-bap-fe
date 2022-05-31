@@ -6,7 +6,9 @@ import {
   PollRequest
 } from './../../types/Search';
 
-export const buildSearchRequest = (search?: SearchItemsWhere): SearchRequest => {
+export const buildSearchRequest = (
+  search?: SearchItemsWhere
+): SearchRequest => {
   if (search) {
     return new SearchRequest(
       search.itemContains,
@@ -22,6 +24,7 @@ export const buildOnSearchRequest = (pollRequest?: PollRequest) => {
   if (pollRequest) {
     return new OnSearchRequest(
       pollRequest.message_id,
+      pollRequest.providerName,
       pollRequest.limit,
       pollRequest.skip
     ).toParams();
