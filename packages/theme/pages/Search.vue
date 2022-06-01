@@ -254,7 +254,10 @@ export default {
         poll({
           // eslint-disable-next-line camelcase
           message_id: result.value.data.ackResponse.context.message_id,
-          providerName: paramValue
+          providerName:
+            selectedSearchByOption.value === 'search-by-seller'
+              ? paramValue
+              : null
         });
       });
 
