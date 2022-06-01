@@ -9,7 +9,7 @@
       <div class="header h-padding">
         <nuxt-link :to="localePath('/')">
           <SfImage
-            src="/icons/beckn.png"
+            src="/icons/ONDC Logo_PNG.png"
             :width="63"
             :height="20"
             alt="Vue Storefront Next"
