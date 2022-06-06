@@ -296,16 +296,16 @@ body {
       bottom: 0;
       height: 100%;
     }
-    .pos-map-icon{
-      right:0;
-      top:-9px;
+    .pos-map-icon {
+      right: 0;
+      top: -9px;
       height: 100%;
     }
-    div{
-      margin-right:35px;
-      p.loc-heading{
+    div {
+      margin-right: 35px;
+      p.loc-heading {
         font-size: 14px;
-    font-weight: 700;
+        font-weight: 700;
       }
     }
     p {
@@ -371,8 +371,8 @@ body {
     .pos-left {
       left: 0;
     }
-    .pos-right-map{
-      right:30px;
+    .pos-right-map {
+      right: 30px;
     }
     input {
       padding: 0px 20px;
@@ -537,6 +537,7 @@ body {
     left: 0;
     z-index: 3;
   }
+}
 
 // ..............................................................................................
 .open-search {
