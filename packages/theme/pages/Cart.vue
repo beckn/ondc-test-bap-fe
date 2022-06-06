@@ -242,10 +242,12 @@ export default {
               price.value + parseFloat(currentQuoteData.quote?.price?.value)
           };
           if (cart.value.quoteItem[bppId]) {
+            console.log("currentQuoteData-1",currentQuoteData)
             cart.value.quoteItem[bppId][currentQuoteData.provider.id] = {
               ...currentQuoteData.quote
             };
           } else {
+            console.log("currentQuoteData",currentQuoteData)
             cart.value.quoteItem[bppId] = {
               [currentQuoteData.provider.id]: { ...currentQuoteData.quote }
             };

@@ -1,44 +1,40 @@
 <template>
   <div>
     <div class="open-search header-top-space">
-      <h3>Open <br /> Commerce</h3>
+      <h3>
+        Open <br />
+        Commerce
+      </h3>
       <h4>for All</h4>
-      <p>A global marketplace to discover and buy anything you need. Just type what you want to buy and we'll take care of the rest.</p>
-      <div class="position-relative">
-        <div class="open-search-input">
-          <div
-           :class="{'dropdown-button': true, 'dropdown-disabled': !selectedLocation.latitude || !selectedLocation.longitude }"
-           @click="onDropdownHeaderClick">
-            <div v-if="selectedSearchByOption === 'search-by-all'">
-              All
-            </div>
-            <SfImage v-else
-              :src="`/icons/${selectedSearchByOption}.png`"
-              :alt="`${selectedSearchByOption}`"
-            />
-            <SfIcon icon="chevron_down" size="xxs" />
-          </div>
-          <input class="search-placeholder" v-on:keyup.enter="openSearch" v-model="message" :valid="false" errorMessage="errer" type="text" :placeholder="searchByPlaceholderMapper[selectedSearchByOption]" :disabled="!selectedLocation.latitude || !selectedLocation.longitude" v-e2e="'home-search-input'"/>
-          <SfButton class="button-pos sf-button--pure color-primary" :class="{'is-disabled--button':(!selectedLocation.latitude || !selectedLocation.longitude)}" @click="openSearch" :disabled="!selectedLocation.latitude || !selectedLocation.longitude" v-e2e="'home-search-button'">
-            <span class="sf-search-bar__icon">
-              <SfIcon color="var(--c-text)" size="18px" icon="search" />
-            </span>
-          </SfButton>
-        </div>
-
-        <div class="dowpdown" v-if="openSearchByDropdown">
-          <div class="dowpdown-item"
-            v-for="(searchBy, key, index) in searchByMapper" :key="key" @click="onSelectDropdownItem(key)"
-            :class="{'border':index !== Object.keys(searchByMapper)-1}"
-          >
-            <SfImage
-              :src="`/icons/${key}.png`"
-              :alt="`${key}`"
-              class="search-by-icon"
-            />
-            {{searchBy}}
-          </div>
-        </div>
+      <p>
+        A global marketplace to discover and buy anything you need. Just type
+        what you want to buy and we'll take care of the rest.
+      </p>
+      <div class="open-search-input">
+        <input
+          v-on:keyup.enter="openSearch"
+          v-model="message"
+          :valid="false"
+          errorMessage="errer"
+          type="text"
+          placeholder="Search for anything"
+          :disabled="!selectedLocation.latitude || !selectedLocation.longitude"
+          v-e2e="'home-search-input'"
+        />
+        <SfButton
+          class="button-pos sf-button--pure color-primary"
+          :class="{
+            'is-disabled--button':
+              !selectedLocation.latitude || !selectedLocation.longitude
+          }"
+          @click="openSearch"
+          :disabled="!selectedLocation.latitude || !selectedLocation.longitude"
+          v-e2e="'home-search-button'"
+        >
+          <span class="sf-search-bar__icon">
+            <SfIcon color="var(--c-text)" size="18px" icon="search" />
+          </span>
+        </SfButton>
       </div>
       <div v-if="errorMsg" class="error-msg">Please fill out this field.</div>
     </div>
@@ -46,17 +42,16 @@
     <div class="sf-footer">
       <SfFooter class="footer">
         <!-- <p><span>By</span> <img src="../assets/images/p-b-phonepe.png" alt="" /> </p> -->
-        <p><span class="powered-by">Powered by</span> <img src="../assets/images/beckn-logo.png" alt="" /> </p>
+        <p>
+          <span class="powered-by">Powered by</span>
+          <img src="../assets/images/beckn-logo.png" alt="" />
+        </p>
       </SfFooter>
     </div>
   </div>
 </template>
 <script>
-import {
-  SfButton,
-  SfIcon,
-  SfImage
-} from '@storefront-ui/vue';
+import { SfButton, SfIcon } from '@storefront-ui/vue';
 import { useUiState } from '~/composables';
 import { SfFooter } from '@storefront-ui/vue';
 import { ref } from '@vue/composition-api';
@@ -67,37 +62,12 @@ export default {
   components: {
     SfButton,
     SfIcon,
-    SfFooter,
-    SfImage
+    SfFooter
   },
 
   setup(_, context) {
     const message = ref('');
     const errorMsg = ref(false);
-    const openSearchByDropdown = ref(false);
-    const searchByMapper = {
-      'search-by-all': 'All',
-      'search-by-seller': 'Search by Seller',
-      'search-by-category': 'Search by Category'
-    };
-    const searchByPlaceholderMapper = {
-      'search-by-all': 'Search for Items',
-      'search-by-seller': 'Enter Seller\'s Name',
-      'search-by-category': 'Enter Category Name'
-    };
-
-    const selectedSearchByOption = ref('search-by-all');
-
-    const onDropdownHeaderClick = () => {
-      if (selectedLocation.value.latitude || selectedLocation.value.longitude) {
-        openSearchByDropdown.value = !openSearchByDropdown.value;
-      }
-    };
-
-    const onSelectDropdownItem = (selectedOption) => {
-      selectedSearchByOption.value = selectedOption;
-      openSearchByDropdown.value = false;
-    };
 
     const openSearch = () => {
       if (message.value) {
@@ -105,8 +75,7 @@ export default {
         context.root.$router.push({
           name: 'Search',
           params: {
-            searchKey: message.value,
-            searchBy: selectedSearchByOption.value
+            searchKey: message.value
           }
         });
       } else {
@@ -118,13 +87,7 @@ export default {
       selectedLocation,
       message,
       errorMsg,
-      openSearch,
-      openSearchByDropdown,
-      onSelectDropdownItem,
-      searchByMapper,
-      selectedSearchByOption,
-      searchByPlaceholderMapper,
-      onDropdownHeaderClick
+      openSearch
     };
   }
 };
@@ -202,9 +165,9 @@ export default {
       }
     }
 
-    .search-placeholder {
-      padding-left: 85px;
-    }
+    // .search-placeholder {
+    //   padding-left: 85px;
+    // }
   }
   .error-msg {
     font-size: 14px;
@@ -232,55 +195,55 @@ export default {
   }
 }
 
-.dropdown-button{
+.dropdown-button {
   position: absolute;
-  border-right: 1px solid #D9D9D9;
+  border-right: 1px solid #d9d9d9;
   height: 100%;
   padding: 10px;
   width: 75px;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  color: #F37A20;
+  color: #f37a20;
   box-sizing: border-box;
   font-weight: 700;
   cursor: pointer;
 }
 
-.dowpdown{
-  background: #FFFFFF;
-  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.3);
-  border-radius: 6px;
-  padding: 0 7px;
-  position: absolute;
-  width: 342px;
-  z-index: 1;
-  .dowpdown-item{
-    display: flex;
-    align-items: center;
-    padding: 8px 0;
-    cursor: pointer;
-  }
-  .border{
-    border-bottom: 1px solid rgba(226, 226, 226, 0.7);
-  }
-  .color-text{
-    color: #F37A20;
-    cursor: pointer;
-  }
-}
+// .dowpdown {
+//   background: #ffffff;
+//   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.3);
+//   border-radius: 6px;
+//   padding: 0 7px;
+//   position: absolute;
+//   width: 342px;
+//   z-index: 1;
+//   .dowpdown-item {
+//     display: flex;
+//     align-items: center;
+//     padding: 8px 0;
+//     cursor: pointer;
+//   }
+//   .border {
+//     border-bottom: 1px solid rgba(226, 226, 226, 0.7);
+//   }
+//   .color-text {
+//     color: #f37a20;
+//     cursor: pointer;
+//   }
+// }
 
-.search-by-icon {
-  padding-right: 20px;
-  padding-left: 8px;
-}
+// .search-by-icon {
+//   padding-right: 20px;
+//   padding-left: 8px;
+// }
 
-.dropdown-disabled {
-  opacity: 0.4;
-  color: #e0e0e1 !important;
+// .dropdown-disabled {
+//   opacity: 0.4;
+//   color: #e0e0e1 !important;
 
-  .sf-icon {
-      --icon-color: #e0e0e1 !important;
-    }
-}
+//   .sf-icon {
+//     --icon-color: #e0e0e1 !important;
+//   }
+// }
 </style>
