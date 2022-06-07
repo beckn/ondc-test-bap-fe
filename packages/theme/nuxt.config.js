@@ -57,7 +57,7 @@ export default {
         href:
           'https://fonts.googleapis.com/css?family=Raleway:300,400,400i,500,600,700|Roboto:300,300i,400,400i,500,700&display=swap',
         media: 'print',
-        onload: 'this.media=\'all\'',
+        onload: "this.media='all'",
         once: true
       }
     ],
@@ -108,12 +108,12 @@ export default {
       '@nuxtjs/firebase',
       {
         config: {
-          apiKey: 'AIzaSyAQRzHvbBiH7gutkES0ouMH5l1PDUbnqSM',
-          authDomain: 'becknauth.firebaseapp.com',
-          projectId: 'becknauth',
-          storageBucket: 'becknauth.appspot.com',
-          messagingSenderId: '267664481117',
-          appId: '1:267664481117:web:dfe76d5f9d3129386926b4>'
+          apiKey: 'AIzaSyBz_0Hk3wcjiujsN0wGEhw69cp5vNK_ijw',
+          authDomain: 'ondc-bap.firebaseapp.com',
+          projectId: 'ondc-bap',
+          storageBucket: 'ondc-bap.appspot.com',
+          messagingSenderId: '814563348438',
+          appId: '1:814563348438:web:70f26e7c73073c099e5e77'
         },
         services: {
           auth: {
