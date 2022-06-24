@@ -242,12 +242,10 @@ export default {
               price.value + parseFloat(currentQuoteData.quote?.price?.value)
           };
           if (cart.value.quoteItem[bppId]) {
-            console.log("currentQuoteData-1",currentQuoteData)
             cart.value.quoteItem[bppId][currentQuoteData.provider.id] = {
               ...currentQuoteData.quote
             };
           } else {
-            console.log("currentQuoteData",currentQuoteData)
             cart.value.quoteItem[bppId] = {
               [currentQuoteData.provider.id]: { ...currentQuoteData.quote }
             };
@@ -312,7 +310,8 @@ export default {
                   // eslint-disable-next-line camelcase
                   transaction_id: transactionId,
                   // eslint-disable-next-line camelcase
-                  bpp_id: bppId
+                  bpp_id: bppId,
+                  bpp_uri: cart.value.bpp_uri
                 },
                 message: {
                   cart: {

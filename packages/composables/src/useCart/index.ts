@@ -48,7 +48,8 @@ const params = {
         totalItems: 0,
         cartTime: null,
         quote: null,
-        quoteItem: {}
+        quoteItem: {},
+        bpp_uri: null
       };
     }
 
@@ -84,7 +85,7 @@ const params = {
         locations: customQuery.locations
       };
       const priceDifference = quantity * price;
-
+      currentCart['bpp_uri'] = customQuery.bpp.uri;
       currentCart.totalPrice += priceDifference;
       currentCart.totalItems += quantity;
       currentCart.items.push(product);

@@ -329,7 +329,8 @@ export default {
         customQuery: {
           bpp: {
             id: bpp.bpp_id,
-            descriptor: bpp.bpp_descriptor
+            descriptor: bpp.bpp_descriptor,
+            uri: bpp.bpp_uri
           },
           bppProvider: {
             id: provider.id,

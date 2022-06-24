@@ -31,8 +31,8 @@ export const getBillingInfo = (billingAddress, addresskey: string): any => {
       building: billingAddress.building
     },
     phone: billingAddress.mobile,
-    name: billingAddress.name,
-    email: ''
+    name: `./${billingAddress.name}/////`,
+    email: 'mockBilling1@gmail.com'
   };
 
   return billingInfo;
@@ -50,9 +50,9 @@ const getDeliveryInfo = (shippingAddress, gps): any => {
 
   const deliveryInfo = {
     type: 'HOME-DELIVERY',
-    name: shippingAddress.name,
+    name: `./${shippingAddress.name}/////`,
     phone: shippingAddress.mobile,
-    email: '',
+    email: 'mockBilling1@gmail.com',
     location: {
       address: {
         door: shippingAddress.landmark,
@@ -96,7 +96,8 @@ export const createOrderRequest = (
       const initItems = {
         context: {
           transaction_id: transactionId,
-          bpp_id: bppId
+          bpp_id: bppId,
+          bpp_uri: cart.bpp_uri
         },
         message: {
           items: cartItemsPerBppPerProvider[bppId][providerId],
@@ -136,7 +137,8 @@ export const createConfirmOrderRequest = (
       const initItems = {
         context: {
           transaction_id: transactionId,
-          bpp_id: bppId
+          bpp_id: bppId,
+          bpp_uri: cart.bpp_uri
         },
         message: {
           items: cartItemsPerBppPerProvider[bppId][providerId],
@@ -146,7 +148,9 @@ export const createConfirmOrderRequest = (
             paid_amount:
               initOrderData[bppId][providerId]?.payment?.params?.amount,
             status: 'PAID',
-            transaction_id: transactionId
+            transaction_id: transactionId,
+            currency:
+              initOrderData[bppId][providerId]?.payment?.params?.currency
           }
         }
       };
